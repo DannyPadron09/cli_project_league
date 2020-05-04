@@ -7,20 +7,15 @@ class LeagueChampions::CLI
     end
 
     def list_champions
-        puts <<-DOC
-        List of Current Available Champions:
-            1. Champion 1
-            2. Champion 2
-            3. Champion 3
-            4. Champion 4
-            5. Champion 5
-            6. Champion 6
-            7. Champion 7
-            8. Champion 8
-            9. Champion 9
-            10. Champion 10
-        DOC
-        # @champions = LeagueChampions::Champions.all
+       
+        @champions = LeagueChampions::Champions.all
+
+    end
+
+    def list_abilities
+
+        @abilities = LeagueChampions::Abilities.all 
+        
     end
 
     def menu
@@ -30,13 +25,15 @@ class LeagueChampions::CLI
             input = gets.strip.downcase
             case input
             when "1"
-                puts "More info for Champion 1..."
+                puts "Here are Champion 1 stats or Enter 'abilities' to see Champion Abilities:"
             when "2"
               puts "More info for Champion 2..."
             when "3"
                puts "More info for Champion 3..."
             when "list"
-                list_champions 
+                list_champions
+            when "abilities"
+                list_abilities
             end
         end
     end
