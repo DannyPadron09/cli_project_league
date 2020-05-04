@@ -1,6 +1,6 @@
 class LeagueChampions::Champions 
 
-    @@champions = []
+    @@champions = ["test"]
 
     def self.all
         @@champions 

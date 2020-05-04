@@ -7,20 +7,20 @@ class LeagueChampions::CLI
     end
 
     def list_champions
-        puts <<-DOC
-        List of Current Available Champions:
-            1. Champion 1
-            2. Champion 2
-            3. Champion 3
-            4. Champion 4
-            5. Champion 5
-            6. Champion 6
-            7. Champion 7
-            8. Champion 8
-            9. Champion 9
-            10. Champion 10
-        DOC
-        #@champions = LeagueChampions::Champions.all
+        # puts <<-DOC
+        # List of Current Available Champions:
+            # 1. Champion 1
+            # 2. Champion 2
+            # 3. Champion 3
+            # 4. Champion 4
+            # 5. Champion 5
+            # 6. Champion 6
+            # 7. Champion 7
+            # 8. Champion 8
+            # 9. Champion 9
+            # 10. Champion 10
+        # DOC
+        @champions = LeagueChampions::Champions.all
     end
 
     def menu
