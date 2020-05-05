@@ -1,13 +1,20 @@
 class LeagueChampions::Ability
 
     def self.all # abilities for selected champion
-        puts <<-DOC
-        Passive = passive_ability
-        Q Ability = q_ability
-        W Ability = w_ability
-        E Ability = e_ability
-        R Ability = r_ability
-    DOC
+        doc = Nokogiri::HTML(open("https://www.mobafire.com/league-of-legends/champions"))
+        all_abilities = []
 
+       
+        binding.pry
+    end
+
+    def get_links
+        all_links = doc.css("div.champ-list.champ-list--details.self-clear")
+        links = doc.css("a")
+
+        links.each do |link, index|
+            
+        end
+        # links[22]["href"] += "/abilities"
     end
 end
