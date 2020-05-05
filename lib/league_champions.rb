@@ -3,5 +3,5 @@ require "pry"
 
 require_relative "./league_champions/version"
 require_relative './league_champions/cli'
-require_relative './league_champions/champions'
-require_relative './league_champions/abilities'
+require_relative './league_champions/champion'
+require_relative './league_champions/ability'
