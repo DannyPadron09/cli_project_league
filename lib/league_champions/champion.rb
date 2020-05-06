@@ -15,10 +15,12 @@ class LeagueChampions::Champion
     def self.all
         doc = Nokogiri::HTML(open("https://www.mobafire.com/league-of-legends/champions"))
         name = doc.css("div.champ-list__item__name b").text
-        @@champions = name.split(/(?<!\s)(?=[A-Z])/)
+        @@champions = name.split(/(?<!\s)(?=[A-Z])/)#.split(/[^'’\p{L}\p{M}]+/)#.split(/(?<!\s)(?=[A-Z])/)#scan(/[\w'-]+|\W+/).select {|x| x.match(/\S/)}#scan(/[\w'-]+|[[:punct:]]+/)
+        # @@champions = @@champions.join.downcase.split(/[^'\w]+/)##.split(/(?<!\s)(?=[A-Z])/)
+        # binding.pry 
     end
 
-    
+
         # doc = Nokogiri::HTML(open("https://www.mobafire.com/league-of-legends/champions"))
         # all_champions = []
         # list_of_champions = doc.css("div.champ-list.champ-list--details.self-clear")

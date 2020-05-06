@@ -25,7 +25,7 @@ class LeagueChampions::CLI
 
     def menu
         input = nil
-        champion_input = nil
+        champion_input = 0
         while ((input != "exit") && (champion_input != "exit"))
             puts "Enter the number of the Champion you would like more info on"
             champion_input = gets.strip.downcase
@@ -40,7 +40,7 @@ class LeagueChampions::CLI
                     stats(champion_input)
                     # binding.pry
                 else
-                    # list_champions
+                    list_champions
                 end
                 puts @champions
             # elsif input == "list"

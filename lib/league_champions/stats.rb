@@ -9,7 +9,13 @@ class LeagueChampions::Stats
         @win_rate = @win_rate.split(" ")
         @ban_rate = doc.css("div.champ-list__item__banP").text
         @ban_rate = @ban_rate.split(" ")
-        puts "Win Rate of the team with this Champion in the roster : #{@win_rate[champion_input.to_i - 1]} - The percentage of times this Champion gets banned : #{@ban_rate[champion_input.to_i - 1]}"
+        puts "Win Rate of the team with this Champion in the roster : #{@win_rate[champion_input.to_i - 1]} - The percentage of times this Champion gets banned : #{@ban_rate[champion_input.to_i - 1]}
+            
+            To see Champion Abilities enter 'abilities' or 'list' to see the list of Champions"
+        input = gets.strip.downcase
+        if input == "abilities"
+            get_ability(champion_input)
+        end
         # champion_input
         # @position = doc.css("div.champ-list__item__role img").attr('alt').value
         # @win_rate.split(" ").each_with_index do |rate, index|
@@ -17,6 +23,12 @@ class LeagueChampions::Stats
         # end
         # puts @ban_rate
         # puts position 
+
+    end
+
+    def self.get_ability(champion_input)
+        
+        LeagueChampions::Ability.get_ability(champion_input)
 
     end
 
