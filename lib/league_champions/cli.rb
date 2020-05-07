@@ -3,17 +3,64 @@ require_relative './champion'
 class LeagueChampions::CLI 
     attr_accessor :position, :win_rate, :ban_rate, :name, :stats 
     def call
+        welcome
         list_champions
         menu
         exit_menu
     end
 
+    def welcome
+        puts <<-DOC
+
+
+   _       ___  ____  ____ __ __   ___       ___  _____      _       ___  ____   ___ ____  ___   _____
+  | |     /  _]/    |/    |  |  | /  _]     /   \ |     |    | |     /  _]/    | /  _|    \ |   \ / ___/
+  | |    /  [_|  o  |   __|  |  |/  [_     |     |   __|    | |    /  [_|   __|/  [_|  _  |     (   \_ 
+  | |___|    _|     |  |  |  |  |    _]    |  O  |  |_      | |___|    _|  |  |    _|  |  |  D  \__  |
+  |     |   [_|  _  |  |_ |  :  |   [_     |     |   _]     |     |   [_|  |_ |   [_|  |  |     /  \ |
+  |     |     |  |  |     |     |     |    |     |  |       |     |     |     |     |  |  |     \    |
+  |_____|_____|__|__|___,_|\__,_ |_____|      \___/|__|       |_____|_____|___,_|_____|__|__|_____|\___|
+                                                                                                      
+                                          __ __ __  ____ ___ ___ ____ ____ ___  ____   _____          
+                                         /  |  |  |/    |   |   |    |    /   \ |    \ /  ___/          
+                                        /  /|  |  |  o  | _   _ |  o  |  |     |  _  (   \_           
+                                       /  / |  _  |     |   \_/  |   _/|  |  O  |  |  |\__  |          
+                                      /    \_|  |  |  _  |   |   |  |  |  |     |  |  |/  \ |          
+                                      \      |  |  |  |  |   |   |  |  |  |     |  |  |\    |          
+                                       \____ |__|__|__|__|___|___|__| |____\___/|__|__| \___|          
+                                                                                                      
+
+===============================================================================================================
+
+
+            PRESS 'ENTER' TO BEGIN!
+ 
+ 
+ 
+ DOC
+
+        input = gets.strip.downcase 
+ end
+
     def list_champions
+        listed_names = []
+        hide_names = ['Gath', 'V', 'Sa', 'Zix', 'Maw', 'Blanc', 'Sai', 'Koz',]
        
         @champions = LeagueChampions::Champion.all
+        @champions.delete_at(19)
+        @champions.delete_at(44)
+        @champions.delete_at(49)
+        @champions.delete_at(58)
+        @champions.delete_at(61)
+        @champions.delete_at(62)
+        @champions.delete_at(93)
+        @champions.delete_at(130)
+
+        # binding.pry
         @champions.each_with_index do |champion, index|
-            puts "#{index + 1}. #{champion}" #- #{champion.position} - #{champion.win_rate} - #{champion.ban_rate}"
-            # binding.pry
+            puts  "#{index + 1}. #{champion}"
+            # final_list = listed_names.reject { |x| hide_names.include?(x)}
+            # puts final_list 
         end
     end
 
@@ -21,7 +68,7 @@ class LeagueChampions::CLI
 
         @abilities = LeagueChampions::Ability.all 
 
-    end
+    end    
 
     def menu
         input = nil

@@ -27,11 +27,11 @@ class LeagueChampions::Ability
             ability = link.css("div.champ-abilities__item__name").text.split("\n")
             # binding.pry
             puts ability 
+           
             puts "Enter 'list' to see the list again or 'exit' to exit"
             input = gets.strip.downcase #waits for user to input something
         end 
         # binding.pry
-        puts "To return to list enter 'list' or 'exit' to exit"
         # doc.css("div.champ-list.champ-list--details.self-clear").css("a").attr("href").map do |a|
             # champion_link = a.text
             # champion_links_all << champion_link

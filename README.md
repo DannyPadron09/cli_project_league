@@ -1,8 +1,10 @@
 # LeagueChampions
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/league_champions`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the League of Legends Champions search CLI Gem. This is a simple gem for fans of 
+League of Legends who want to look up a certain champion's stats, such as their win rate, 
+their ban rate as well as their each individual abilities. Select a champion from the list 
+to find out all their information.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
