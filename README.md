@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To begin and run the Gem enter 'bin/league_champions' and follow the menu.
 
 ## Development
 
