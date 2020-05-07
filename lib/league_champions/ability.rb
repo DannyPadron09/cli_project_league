@@ -22,13 +22,12 @@ class LeagueChampions::Ability
             end  
             # puts "https:/#{@champion_links[champion_input.to_i - 1]}/abilities"
             # binding.pry
-            # binding.pry 
             link = Nokogiri::HTML(open("https://mobafire.com#{@champion_links[champion_input.to_i - 1]}/abilities"))
             ability = link.css("div.champ-abilities__item__name").text.split("\n")
-            # binding.pry
             puts ability 
-           
-            puts "Enter 'list' to see the list again or 'exit' to exit"
+            puts "
+            
+            Enter 'list' to see the list again or 'exit' to exit"
             input = gets.strip.downcase #waits for user to input something
         end 
         # binding.pry

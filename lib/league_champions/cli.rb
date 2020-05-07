@@ -43,11 +43,8 @@ class LeagueChampions::CLI
  end
 
     def list_champions
-        listed_names = []
-        hide_names = ['Gath', 'V', 'Sa', 'Zix', 'Maw', 'Blanc', 'Sai', 'Koz',]
-       
         @champions = LeagueChampions::Champion.all
-        @champions.delete_at(19)
+        @champions.delete_at(19) # removing doubled champions
         @champions.delete_at(44)
         @champions.delete_at(49)
         @champions.delete_at(58)
@@ -73,7 +70,9 @@ class LeagueChampions::CLI
     def menu
         input = nil
         champion_input = 0
-        while ((input != "exit") && (champion_input != "exit"))
+        if input == "exit"
+            exit_menu
+        else
             puts "Enter the number of the Champion you would like more info on"
             champion_input = gets.strip.downcase
             # @selected_champion = champion_input 
@@ -86,10 +85,10 @@ class LeagueChampions::CLI
                     puts @selected_champion
                     stats(champion_input)
                     # binding.pry
-                else
-                    list_champions
+                else input == "exit"
+                    exit_menu
                 end
-                puts @champions
+                list_champions 
             # elsif input == "list"
                 # list_champions
             # elsif input == "abilities"
