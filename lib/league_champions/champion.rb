@@ -16,6 +16,10 @@ class LeagueChampions::Champion
         doc = Nokogiri::HTML(open("https://www.mobafire.com/league-of-legends/champions"))
         name = doc.css("div.champ-list__item__name b").text
         @@champions = name.split(/(?<!\s)(?=[A-Z])/)#.split(/[^'’\p{L}\p{M}]+/)#.split(/(?<!\s)(?=[A-Z])/)#scan(/[\w'-]+|\W+/).select {|x| x.match(/\S/)}#scan(/[\w'-]+|[[:punct:]]+/)
+        
+    
+            # final_list = listed_names.reject { |x| hide_names.include?(x)}
+            # puts final_list 
         # @@champions = @@champions.join.downcase.split(/[^'\w]+/)##.split(/(?<!\s)(?=[A-Z])/)
         # binding.pry 
     end

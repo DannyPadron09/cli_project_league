@@ -1,12 +1,12 @@
 require_relative './champion'
+require_relative './cli'
 
 class LeagueChampions::CLI 
     attr_accessor :position, :win_rate, :ban_rate, :name, :stats 
     def call
         welcome
-        list_champions
+        # list_champions
         menu
-        exit_menu
     end
 
     def welcome
@@ -43,8 +43,9 @@ class LeagueChampions::CLI
  end
 
     def list_champions
-        @champions = LeagueChampions::Champion.all
-        @champions.delete_at(19) # removing doubled champions
+        @champions = LeagueChampions::Champion.all 
+
+        @champions.delete_at(19) # removing doubledchampions
         @champions.delete_at(44)
         @champions.delete_at(49)
         @champions.delete_at(58)
@@ -52,13 +53,11 @@ class LeagueChampions::CLI
         @champions.delete_at(62)
         @champions.delete_at(93)
         @champions.delete_at(130)
-
-        # binding.pry
+        
         @champions.each_with_index do |champion, index|
             puts  "#{index + 1}. #{champion}"
-            # final_list = listed_names.reject { |x| hide_names.include?(x)}
-            # puts final_list 
         end
+
     end
 
     def list_abilities
@@ -68,12 +67,11 @@ class LeagueChampions::CLI
     end    
 
     def menu
-        input = nil
+        input = ""
         champion_input = 0
-        if input == "exit"
-            exit_menu
-        else
-            puts "Enter the number of the Champion you would like more info on"
+        until input == "exit"
+            list_champions 
+            puts "Enter the number of the Champion you would like more info on or 'exit' to Exit"
             champion_input = gets.strip.downcase
             # @selected_champion = champion_input 
             # binding.pry
@@ -86,9 +84,10 @@ class LeagueChampions::CLI
                     stats(champion_input)
                     # binding.pry
                 else input == "exit"
-                    exit_menu
+                    exit_menu 
                 end
-                list_champions 
+            else
+                exit_menu 
             # elsif input == "list"
                 # list_champions
             # elsif input == "abilities"
@@ -120,6 +119,24 @@ class LeagueChampions::CLI
     end
 
     def exit_menu
-        puts "Hope you found what you were looking for!"
+        puts "
+        ______  __ __   ____  ____   __  _  _____   _____   ___   ____      
+       |      ||  |  | /    ||    \  |  |/ ]/ ___/  |     | /   \ |    \     
+       |      ||  |  ||  o  ||  _  ||  ' /(   \_    |   __||     ||  D  )    
+       |_|  |_||  _  ||     ||  |  ||    \  \__  |   |  |_  |  O  ||    /     
+         |  |  |  |  ||  _  ||  |  ||    \ /  \  |   |   _) |     ||    \     
+         |  |  |  |  ||  |  ||  |  ||  . |\     |   |  |   |     ||  .  \    
+         |__|  |__|__||__|__||__|__||__|\_| \___|    |__|     \___/ |__|\_|    
+                                                                              
+         _____   ___   ____  ____     __  __ __  ____  ____    ____  __      
+        / ___/  /  _] /    ||    \    /  ]|  |  ||    ||    \  /     ||  |     
+       (   \_  /  [_ |  o  ||  D  )  /  / |  |  | |  | |  _  ||   __||  |     
+        \__  ||    _]|     ||    /  /  /  |  _  | |  | |  |  ||  |  ||__|     
+        /  \ ||   [_ |  _  ||    \  / \    _|  |  | |  | |  |  ||  |_ | __      
+        \\   ||     ||  |  ||  .  \\      ||  |  | |  | |  |  ||     ||  |     
+         \___||_____||__|__||__|\_| \  ____||__|__||____||__|__||___,_||__|     
+                                                                              
+       "
+        exit
     end
 end

@@ -11,10 +11,12 @@ class LeagueChampions::Stats
         @ban_rate = @ban_rate.split(" ")
         puts "Win Rate of the team with this Champion in the roster : #{@win_rate[champion_input.to_i - 1]} - The percentage of times this Champion gets banned : #{@ban_rate[champion_input.to_i - 1]}
             
-            To see Champion Abilities enter 'abilities' or 'list' to see the list of Champions"
+            To see Champion's Abilities enter 'abilities' or 'list' to see the list of Champions"
         input = gets.strip.downcase
         if input == "abilities"
             get_ability(champion_input)
+        elsif input == "list"
+            LeagueChampions::CLI.list_champions
         end
         # champion_input
         # @position = doc.css("div.champ-list__item__role img").attr('alt').value
