@@ -45,7 +45,7 @@ class LeagueChampions::CLI
     def list_champions
         @champions = LeagueChampions::Champion.all 
 
-        @champions.delete_at(19) # removing doubledchampions
+        @champions.delete_at(19) # removing doubled champions
         @champions.delete_at(44)
         @champions.delete_at(49)
         @champions.delete_at(58)
@@ -71,7 +71,9 @@ class LeagueChampions::CLI
         champion_input = 0
         until input == "exit"
             list_champions 
-            puts "Enter the number of the Champion you would like more info on or 'exit' to Exit"
+            puts "
+            
+            Enter the number of the Champion you would like more info on or 'exit' to Exit"
             champion_input = gets.strip.downcase
             # @selected_champion = champion_input 
             # binding.pry
